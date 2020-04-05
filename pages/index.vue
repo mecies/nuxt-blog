@@ -3,28 +3,15 @@
     <section class="intro">
       <h1>Get latest blog news</h1>
     </section>
-    <section class="featured-posts">
-      <PostPreview
-        id="1"
-        title="Hello there"
-        previewText="This is my first post"
-        thumbnail="https://staticeurobiz.europeanchamber.com.cn/wp-content/uploads/2019/04/PLANNING-NEW-EVENTURES.png"
-      />
-      <PostPreview
-        id="2"
-        title="Hello there second time"
-        previewText="This is my second post - would you belive that?"
-        thumbnail="https://staticeurobiz.europeanchamber.com.cn/wp-content/uploads/2019/04/PLANNING-NEW-EVENTURES.png"
-      />
-    </section>
+    <PostList />
   </div>
 </template>
 
 <script>
-import PostPreview from "@/components/Posts/PostPreview.vue";
+import PostList from "@/components/Posts/PostList.vue";
 export default {
   components: {
-    PostPreview,
+    PostList,
   },
 };
 </script>
@@ -59,14 +46,5 @@ export default {
   .intro h1 {
     font-size: 2rem;
   }
-}
-
-.featured-posts {
-  display: flex;
-  padding: 20px;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
 }
 </style>
