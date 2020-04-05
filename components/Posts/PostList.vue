@@ -2,12 +2,14 @@
   <section class="posts-list">
     <PostPreview
       id="1"
+      :isAdmin="isAdmin"
       title="Hello there"
       previewText="This is my first post"
       thumbnail="https://staticeurobiz.europeanchamber.com.cn/wp-content/uploads/2019/04/PLANNING-NEW-EVENTURES.png"
     />
     <PostPreview
       id="2"
+      :isAdmin="isAdmin"
       title="Hello there second time"
       previewText="This is my second post - would you belive that?"
       thumbnail="https://staticeurobiz.europeanchamber.com.cn/wp-content/uploads/2019/04/PLANNING-NEW-EVENTURES.png"
@@ -20,6 +22,12 @@ import PostPreview from "@/components/Posts/PostPreview.vue";
 export default {
   components: {
     PostPreview,
+  },
+  props: {
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
