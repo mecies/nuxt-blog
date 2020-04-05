@@ -6,7 +6,7 @@
           >Author Name</AppControlInput
         >
         <AppControlInput v-model="editedPost.title">Title</AppControlInput>
-        <AppControlInput v-model="editedPost.thumbnailLiml"
+        <AppControlInput v-model="editedPost.thumbnailLink"
           >Thumbnail link</AppControlInput
         >
         <AppControlInput v-model="editedPost.content" control-type="textarea"
@@ -31,17 +31,22 @@ export default {
       editedPost: {
         author: "",
         title: "",
-        thumbnailLiml: "",
+        thumbnailLink: "",
         content: "",
       },
     };
   },
+  components: {
+    AppControlInput,
+    AppButton,
+  },
   methods: {
     onSave() {
       // save the post
+      console.log(this.editedPost);
     },
     onCancel() {
-      //navigate back
+      this.$router.push("/admin");
     },
   },
 };

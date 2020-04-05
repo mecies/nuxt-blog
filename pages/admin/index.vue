@@ -1,7 +1,7 @@
 <template>
   <div class="admin-page">
     <section class="new-post">
-      <button>Create post</button>
+      <button @click="$router.push('/admin/newPost')">Create post</button>
     </section>
     <section class="existing-posts">
       <h1>Existing posts</h1>
