@@ -1,12 +1,14 @@
 <template>
   <div class="single-post-page">
     <section class="post">
-      <h1 class="post-title">Title</h1>
+      <h1 class="post-title">{{ loadedPost.title }}</h1>
       <div class="post-details">
-        <div class="post-detail">Last updated on XXX</div>
-        <div class="post-detail">Written by NAME</div>
+        <div class="post-detail">
+          Last updated on {{ loadedPost.updatedData }}
+        </div>
+        <div class="post-detail">Written by {{ loadedPost.author }}</div>
       </div>
-      <p class="post-content">content of the post</p>
+      <p class="post-content">{{ loadedPost.content }}</p>
     </section>
     <section class="post-feedback">
       <p>
@@ -18,7 +20,24 @@
 </template>
 
 <script>
-export default {};
+export default {
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(new Error(), {
+        loadedPost: {
+          id: "1",
+          title: `first post id: ${context.params.id}`,
+          previewText: "siema ja preview",
+          content: "lorem sdka dsa das dsad asd asd asd asd as",
+          thumbnail:
+            "https://staticeurobiz.europeanchamber.com.cn/wp-content/uploads/2019/04/PLANNING-NEW-EVENTURES.png",
+          author: "maciancio",
+          updatedData: new Date(),
+        },
+      });
+    }, 1000);
+  },
+};
 </script>
 
 <style scoped>

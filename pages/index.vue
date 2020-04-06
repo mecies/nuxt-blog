@@ -3,7 +3,7 @@
     <section class="intro">
       <h1>Get latest blog news</h1>
     </section>
-    <PostList />
+    <PostList :posts="loadedPosts" />
   </div>
 </template>
 
@@ -12,6 +12,11 @@ import PostList from "@/components/Posts/PostList.vue";
 export default {
   components: {
     PostList,
+  },
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts;
+    },
   },
 };
 </script>
