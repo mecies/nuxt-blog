@@ -42,7 +42,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["~plugins/globalComponents.js"],
+  plugins: ["~plugins/globalComponents.js", "~plugins/dateFilter.js"],
   /*
    ** Nuxt.js dev-modules
    */
