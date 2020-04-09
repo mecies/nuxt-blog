@@ -19,9 +19,6 @@
 </template>
 
 <script>
-import AppControlInput from "@/components/UI-Components/AppControlInput";
-import AppButton from "@/components/UI-Components/AppButton";
-
 export default {
   data() {
     return {
@@ -42,10 +39,7 @@ export default {
       required: false
     }
   },
-  components: {
-    AppControlInput,
-    AppButton
-  },
+
   methods: {
     onSave() {
       // save the post
