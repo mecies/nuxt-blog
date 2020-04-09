@@ -20,7 +20,7 @@ export const mutations = {
 export const actions = {
   nuxtServerInit(vuexContext, context) {
     return axios
-      .get("https://mecies-blog.firebaseio.com/posts.json")
+      .get(process.env.baseUrl + "/posts.json")
       .then(res => {
         const postsArray = [];
         for (const key in res.data) {
@@ -39,7 +39,7 @@ export const actions = {
       updatedDate: new Date()
     };
     return axios
-      .post("https://mecies-blog.firebaseio.com/posts.json", createdPost)
+      .post(process.env.baseUrl + "/posts.json", createdPost)
       .then(res => {
         vuexContext.commit("addPost", { ...createdPost, id: res.data.name });
       })
@@ -48,7 +48,7 @@ export const actions = {
   editPost(vuexContext, editedPost) {
     return axios
       .put(
-        "https://mecies-blog.firebaseio.com/posts/" + editedPost.id + ".json",
+        process.env.baseUrl + "/posts/" + editedPost.id + ".json",
         editedPost
       )
       .then(res => {

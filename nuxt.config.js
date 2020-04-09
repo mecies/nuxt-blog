@@ -11,25 +11,34 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: process.env.npm_package_description || "",
-      },
+        content: process.env.npm_package_description || ""
+      }
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css?family=Open+Sans&display=swap",
-      },
-    ],
+        href: "https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: "#fff" },
+  loading: {
+    color: "#fff",
+    failedColor: "#ff0000",
+    duration: 5000,
+    height: "4px"
+  },
+  // loadingIndicator: {
+  //   name: "circle",
+  //   color: "green"
+  // },
   /*
    ** Global CSS
    */
-  css: [],
+  css: ["~assets/styles/main.css"],
   /*
    ** Plugins to load before mounting the App
    */
@@ -49,6 +58,26 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {},
+    extend(config, ctx) {}
   },
+  env: {
+    baseUrl: "https://mecies-blog.firebaseio.com"
+  },
+  transition: {
+    name: "fade",
+    mode: "out-in"
+  }
+  // srcDir: ""
+  // generate: {
+
+  // }
+  // rootDir: "/"
+  // router: {
+  //   extendRoutes(routes, resolve) {
+  //     routes.push({
+  //       path: "*",
+  //       component: resolve(__dirname, "/pages.index.vue")
+  //     });
+  //   }
+  // }
 };
