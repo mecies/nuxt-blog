@@ -20,23 +20,23 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(new Error(), {
-        loadedPost: {
-          id: "1",
-          title: `first post id: ${context.params.id}`,
-          previewText: "siema ja preview",
-          content: "lorem sdka dsa das dsad asd asd asd asd as",
-          thumbnail:
-            "https://staticeurobiz.europeanchamber.com.cn/wp-content/uploads/2019/04/PLANNING-NEW-EVENTURES.png",
-          author: "maciancio",
-          updatedData: new Date(),
-        },
-      });
-    }, 1000);
+  data() {
+    return { loadedPost: {} };
   },
+  asyncData(context) {
+    return axios
+      .get(
+        "https://mecies-blog.firebaseio.com/posts/" +
+          context.params.id +
+          ".json"
+      )
+      .then(res => {
+        return { loadedPost: res.data };
+      })
+      .catch(err => context.error(err));
+  }
 };
 </script>
 

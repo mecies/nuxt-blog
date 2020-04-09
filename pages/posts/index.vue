@@ -8,16 +8,13 @@
 import PostList from "@/components/Posts/PostList.vue";
 export default {
   components: {
-    PostList,
-  },
-  created() {
-    this.$store.dispatch("setPosts", this.loadedPosts);
+    PostList
   },
   computed: {
     loadedPosts() {
       return this.$store.getters.loadedPosts;
-    },
-  },
+    }
+  }
 };
 </script>
 

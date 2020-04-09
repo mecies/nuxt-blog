@@ -9,15 +9,16 @@
 
 <script>
 import PostList from "@/components/Posts/PostList.vue";
+
 export default {
   components: {
-    PostList,
+    PostList
   },
   computed: {
     loadedPosts() {
       return this.$store.getters.loadedPosts;
-    },
-  },
+    }
+  }
 };
 </script>
 

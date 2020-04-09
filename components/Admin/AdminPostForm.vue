@@ -2,11 +2,14 @@
   <form @submit.prevent="onSave">
     <AppControlInput v-model="editedPost.author">Author Name</AppControlInput>
     <AppControlInput v-model="editedPost.title">Title</AppControlInput>
-    <AppControlInput v-model="editedPost.thumbnailLink"
+    <AppControlInput v-model="editedPost.thumbnail"
       >Thumbnail link</AppControlInput
     >
     <AppControlInput v-model="editedPost.content" control-type="textarea"
-      >Author Name</AppControlInput
+      >Content</AppControlInput
+    >
+    <AppControlInput v-model="editedPost.previewText" control-type="textarea"
+      >Preview text</AppControlInput
     >
     <AppButton type="submit">Save</AppButton>
     <AppButton @click="onCancel" btn-style="cancel" type="button"
@@ -28,28 +31,29 @@ export default {
             author: "",
             title: "",
             content: "",
-            thumbnailLink: "",
-          },
+            thumbnail: "",
+            previewText: ""
+          }
     };
   },
   props: {
     post: {
       type: Object,
-      required: false,
-    },
+      required: false
+    }
   },
   components: {
     AppControlInput,
-    AppButton,
+    AppButton
   },
   methods: {
     onSave() {
       // save the post
-      console.log(this.editedPost);
+      this.$emit("submit", this.editedPost);
     },
     onCancel() {
       this.$router.push("/admin");
-    },
-  },
+    }
+  }
 };
 </script>
