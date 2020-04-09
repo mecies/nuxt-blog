@@ -51,6 +51,10 @@ export default {
    ** Nuxt.js modules
    */
   modules: [],
+  axios: {
+    baseURL: "https://mecies-blog.firebaseio.com",
+    credentials: false
+  },
   /*
    ** Build configuration
    */
