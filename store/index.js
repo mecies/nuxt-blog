@@ -100,6 +100,9 @@ export const actions = {
           "expirationDate",
           new Date().getTime() + Number.parseInt(response.data.expiresIn) * 1000
         );
+        return axios.post("http://localhost:3000/api/track-data", {
+          data: "just a message, authen ticated"
+        });
       })
       .catch(e => console.log(e));
   },
