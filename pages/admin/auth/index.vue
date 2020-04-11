@@ -28,6 +28,7 @@
 import axios from "axios";
 export default {
   name: "AdminAuthPage",
+  middleware: ["check-auth", "guest"],
   layout: "admin",
   data() {
     return {
