@@ -16,24 +16,25 @@
 import PostPreview from "@/components/Posts/PostPreview.vue";
 export default {
   components: {
-    PostPreview,
+    PostPreview
   },
   props: {
     isAdmin: {
       type: Boolean,
-      default: false,
+      default: false
     },
     posts: {
       type: Array,
-      required: true,
-    },
-  },
+      required: true
+    }
+  }
 };
 </script>
 
 <style scoped>
 .posts-list {
   display: flex;
+  width: 100%;
   padding: 20px;
   box-sizing: border-box;
   flex-wrap: wrap;
