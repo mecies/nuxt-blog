@@ -1,9 +1,13 @@
 <template>
   <div class="admin-auth-page">
     <div class="auth-container">
-      <form>
-        <AppControlInput type="email">Email address</AppControlInput>
-        <AppControlInput type="password">Password</AppControlInput>
+      <form @submit.prevent="onSubmit">
+        <AppControlInput v-model="email" type="email"
+          >Email address</AppControlInput
+        >
+        <AppControlInput v-model="password" type="password"
+          >Password</AppControlInput
+        >
         <AppButton type="submit">
           {{ isLogin ? "Login" : "Sign up" }}
         </AppButton>
@@ -21,13 +25,29 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "AdminAuthPage",
   layout: "admin",
   data() {
     return {
-      isLogin: true
+      isLogin: true,
+      email: "",
+      password: ""
     };
+  },
+  methods: {
+    onSubmit() {
+      this.$store
+        .dispatch("authenticateUser", {
+          isLogin: this.isLogin,
+          email: this.email,
+          password: this.password
+        })
+        .then(() => {
+          this.$router.push("/admin");
+        });
+    }
   }
 };
 </script>

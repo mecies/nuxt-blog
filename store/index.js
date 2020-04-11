@@ -1,7 +1,8 @@
 import axios from "axios";
 
 export const state = () => ({
-  loadedPosts: []
+  loadedPosts: [],
+  token: null
 });
 export const mutations = {
   setPosts(state, posts) {
@@ -15,6 +16,9 @@ export const mutations = {
       post => post.id === editedPost.id
     );
     state.loadedPosts[postIndex] = editedPost;
+  },
+  setToken(state, token) {
+    state.token = token;
   }
 };
 export const actions = {
@@ -55,6 +59,24 @@ export const actions = {
         vuexContext.commit("editPost", { editedPost });
       })
       .catch(err => console.error(err));
+  },
+  authenticateUser(vuexContext, authData) {
+    let authUrl =
+      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=";
+    if (!authData.isLogin) {
+      authUrl =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
+    }
+    return axios
+      .post(authUrl + process.env.firebaseApiKey, {
+        email: authData.email,
+        password: authData.password,
+        returnSecureToken: true
+      })
+      .then(response => {
+        vuexContext.commit("setToken", response.data.idToken);
+      })
+      .catch(e => console.log(e));
   }
 };
 export const getters = {

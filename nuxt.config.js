@@ -65,7 +65,8 @@ export default {
     extend(config, ctx) {}
   },
   env: {
-    baseUrl: "https://mecies-blog.firebaseio.com"
+    baseUrl: "https://mecies-blog.firebaseio.com",
+    firebaseApiKey: "AIzaSyB-Nkbtm3g3lADc6FZbUm6uT29ua631LW8"
   },
   transition: {
     name: "fade",
@@ -73,7 +74,9 @@ export default {
   }
   // srcDir: ""
   // generate: {
-
+  // router: {
+  //   middleware: 'log'
+  // }
   // }
   // rootDir: "/"
   // router: {
